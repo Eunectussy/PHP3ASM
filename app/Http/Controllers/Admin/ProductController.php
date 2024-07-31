@@ -34,7 +34,8 @@ class ProductController extends Controller
         $data = [
             'name' => $req->nameProduct,
             'price' => $req->priceProduct,
-            'image' => $imageUrl
+            'image' => $imageUrl,
+            'description' => $req->desc,
         ];
         Products::create($data);
 
@@ -44,11 +45,11 @@ class ProductController extends Controller
             ]);
     }
     public function deleteProduct(Request $req){
-        $product = Products::where('id', $req->idproduct)->first();
+        $product = Products::where('id', $req->id)->first();
         if($product->image != null && $product->image != ''){
             File::delete(public_path($product->image));
         }
-        Products::where('id', $req->idproduct)->delete();
+        Products::where('id', $req->id)->delete();
         return redirect()->route('admin.product.listProducts')->with([
             'message' => 'Xóa thành công'
         ]);
@@ -81,7 +82,9 @@ class ProductController extends Controller
         $data = [
             'name' => $req->nameProduct,
             'price' => $req->priceProduct,
-            'image' => $linkImage
+            'image' => $linkImage,
+            'description' => $req->desc,
+
         ];
         Products::where('id', $id)->update($data);
         return redirect()->route('admin.product.listProducts')->with([

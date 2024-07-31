@@ -13,33 +13,27 @@
 
 <body>
     <div class="container">
-      <h3>Đăng nhập</h3>
-      @if (session('messageError'))
-      <h4 class="text-danger">{{ session('messageError') }}</h4>
-      @endif
-      <form action="{{ route('postLogin') }}" method="POST">
+        @if (session('message'))
+        <h4 class="text-danger">{{ session('message') }}</h4>
+        @endif
+      <h3>Đăng ký</h3>
+      <form action="{{ route('postRegister') }}" method="POST">
         @csrf
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" placeholder="abc">
+          </div>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Email</label>
           <input type="email" class="form-control" name="email" placeholder="name@example.com">
-          @error('email')
-          <span class="text-danger">{{ $message }}</span>
-          @enderror
         </div>
         <div class="mb-3">
           <label for="exampleFormControlTextarea1" class="form-label">Password</label>
           <input type="password" class="form-control" name="password" placeholder="123456">
-          @error('password')
-          <span class="text-danger">{{ $message }}</span>
-          @enderror
         </div>
-        <div class="mb-3">
-          <input type="checkbox" name="remember" id="remember">
-          <label for="remember">Remember me</label>
-        </div>
-        <button class="btn btn-primary">Đăng nhập</button>
+        <button class="btn btn-primary">Đăng ký</button>
         <a href="{{route('trangchu')}}" class="btn btn-success">Trang chủ</a>
-        <a href="{{route('register')}}" class="btn btn-success">Đăng kí</a>
+        <a href="{{route('login')}}" class="btn btn-success">Đăng nhập</a>
       </form>
     </div>
     {{-- <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script> --}}

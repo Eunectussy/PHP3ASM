@@ -19,7 +19,9 @@
         <label for="" class="form-label">Ảnh sản phẩm: </label>
         <img src="{{ asset($product->image) }}" alt="" width="200px">
     </div>
-
+    <div class="mb-3">
+        <label for="" class="form-label">Mô tả sản phẩm: {{$product->description}}</label>
+    </div>
     <a href="{{route('admin.product.listProducts')}}" class="btn btn-success">Danh sách</a>
 
 @endsection

@@ -13,6 +13,10 @@ Route::get('/', function () {
 Route::get('/login', [AuthenController::class, 'login'])->name('login');
 Route::post('/login', [AuthenController::class, 'postLogin'])->name('postLogin');
 Route::get('/logout', [AuthenController::class, 'logout'])->name('logout');
+Route::get('/register', [AuthenController::class, 'register'])->name('register');
+Route::post('/register', [AuthenController::class, 'postRegister'])->name('postRegister');
+
+
 
 
 
@@ -21,7 +25,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'checkAdmin
         Route::get('/', [ProductController::class, 'listProducts'])->name('listProducts');
         Route::get('/add-product', [ProductController::class,'addProducts'])->name('addProducts');
         Route::post('/add-product', [ProductController::class,'addPostProducts'])->name('addPostProducts');
-        Route::delete('/delete-product', [ProductController::class,'deleteProduct'])->name('deleteProducts');      
+        // Route::delete('/delete-product', [ProductController::class,'deleteProduct'])->name('deleteProducts');      
+        Route::get('/delete-product/{id}', [ProductController::class,'deleteProduct'])->name('deleteProducts'); 
         Route::get('detail-product/{id}', [ProductController::class, 'detailProduct'])->name('detailProducts');
         Route::get('update-product/{id}', [ProductController::class, 'updateProduct'])->name('updateProducts');
         Route::patch('update-product/{id}', [ProductController::class, 'updatePatchProduct'])->name('updatePatchProducts');

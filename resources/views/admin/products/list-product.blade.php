@@ -53,9 +53,11 @@
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->price }}</td>
                                             <td><img src="{{ asset($item->image) }}" width="200px"></td>
-                                            <td><button type="button" class="btn btn-warning btn-delete" data-bs-id="{{ $item->id }}"
-                                                data-bs-toggle="modal" data-bs-target="#deleteModel">Xóa</button>
-                                                <a href="{{route('admin.product.updateProducts', $item->id)}}" class="btn btn-secondary">Sửa</a>
+                                            <td>
+                                                {{-- <button type="button" class="btn btn-warning btn-delete" data-bs-id="{{ $item->id }}"
+                                                data-bs-toggle="modal" data-bs-target="#deleteModel">Xóa</button> --}}
+                                                <a href="{{route('admin.product.deleteProducts', $item->id)}}" class="btn btn-danger">Xóa</a>
+                                                <a href="{{route('admin.product.updateProducts', $item->id)}}" class="btn btn-primary">Sửa</a>
                                                 <a href="{{route('admin.product.detailProducts', $item->id)}}" class="btn btn-secondary">Chi tiết</a>
                                             </td>
                                         </tr>
@@ -72,7 +74,7 @@
     </div>
 </div>
       <!-- Modal -->
-      <div class="modal fade" id="deleteModel" tabindex="-1" aria-labelledby="deleteModelLabel" aria-hidden="true">
+      {{-- <div class="modal fade" id="deleteModel" tabindex="-1" aria-labelledby="deleteModelLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -94,11 +96,11 @@
             </div>
         </div>
     </div>
-
+ --}}
 
 @endsection
 @push('script')
-<script>
+{{-- <script>
     var exampleModal = document.getElementById('formDelete')
 exampleModal.addEventListener('show.bs.modal', function (event) {
   var button = event.relatedTarget
@@ -106,5 +108,5 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
   let formDelete = document.querySelector('#formDelete')
   formDelete.setAttribute('action', '{{route("admin.product.deleteProducts")}}?id=' +recipent)
 })
-</script>
+</script> --}}
 @endpush

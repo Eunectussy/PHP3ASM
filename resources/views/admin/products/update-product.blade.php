@@ -21,9 +21,13 @@
         <input type="text" class="form-control" name="priceProduct" id="" value="{{$product->price}}">
     </div>
     <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Mô tả</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" name="desc" rows="3" value="">{{$product->description}}</textarea>
+      </div>
+    <div class="mb-3">
         <label for="" class="form-label">Ảnh sản phẩm</label>
         <img src="/{{$product->image}}" alt="Ảnh sản phẩm" style="width: 100px">
-        <input type="file" class="form-image" name="imageProduct" id="imageProduct" accept="image/*">
+        <input type="file" class="form-control" name="imageProduct" id="imageProduct" accept="image/*">
     </div>
 
     <button class="btn btn-success">Sửa</button>
