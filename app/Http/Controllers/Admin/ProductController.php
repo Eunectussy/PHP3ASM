@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminProductRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use Illuminate\Support\Facades\File; //xử lý file
@@ -11,7 +13,11 @@ class ProductController extends Controller
 {
     public function listProducts()
     {
-        $products = Products::paginate(5);
+        
+        $products = Products::join('category', 'category.id', '=', 'products.category_id')
+        ->select('products.id', 'products.name', 'products.price', 'products.image', 'category.name as catename', 'products.created_at', 'products.updated_at')
+        ->orderBy('id', 'desc')
+        ->paginate(5);
         return view('admin.products.list-product')
             ->with([
                 'products' => $products
@@ -19,9 +25,12 @@ class ProductController extends Controller
     }
     public function addProducts()
     {
-        return view('admin.products.add-product');
+        $categories = Category::select('id', 'name')->get();
+        return view('admin.products.add-product')->with([
+            'cate' => $categories
+        ]);
     }
-    public function addPostProducts(Request $req)
+    public function addPostProducts(AdminProductRequest $req)
     {
         $imageUrl = '';
         if ($req->hasFile('imageProduct')) {
@@ -35,6 +44,7 @@ class ProductController extends Controller
             'name' => $req->nameProduct,
             'price' => $req->priceProduct,
             'image' => $imageUrl,
+            'category_id' => $req->categoryProduct,
             'description' => $req->desc,
         ];
         Products::create($data);
@@ -55,7 +65,9 @@ class ProductController extends Controller
         ]);
     }
     public function detailProduct($id){
-        $product = Products::where('id', $id)->first();
+        $product = Products::join('category', 'category.id', '=', 'products.category_id')
+        ->select('products.id', 'products.name', 'products.price', 'products.image', 'products.description', 'category.name as catename', 'products.created_at', 'products.updated_at')
+        ->where('products.id', $id)->first();
         return view('admin.products.detail-product')
             ->with([
                 'product' => $product
@@ -63,12 +75,15 @@ class ProductController extends Controller
     }
     public function updateProduct($id){
         $product = Products::where('id', $id)->first();
+        $categories = Category::select('id', 'name')->get();
         return view('admin.products.update-product')
             ->with([
-                'product' => $product
+                'product' => $product,
+                'cate' => $categories
+
             ]);
     }
-    public function updatePatchProduct($id, Request $req){
+    public function updatePatchProduct($id, AdminProductRequest $req){
         $product = Products::where('id', $id)->first();
         $linkImage = $product->image;
         if($req->hasFile('imageProduct')){
@@ -83,6 +98,7 @@ class ProductController extends Controller
             'name' => $req->nameProduct,
             'price' => $req->priceProduct,
             'image' => $linkImage,
+            'category_id' => $req->categoryProduct,
             'description' => $req->desc,
 
         ];

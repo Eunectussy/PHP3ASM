@@ -11,6 +11,9 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
 	<link href="{{asset('assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 	<link href="{{asset('assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
+<link href="{{asset('assets/css/spct.css')}}" rel="stylesheet" />
+
 </head>
 
 <body id="kt_body" data-bs-spy="scroll" data-bs-target="#kt_landing_menu" class="bg-body position-relative app-blank">
@@ -81,7 +84,7 @@
 		<!-- end::Banner -->
 
 
-		<!--end::Header Section-->
+		{{-- <!--end::Header Section-->
 		<div class="mb-n10 mb-lg-n20 z-index-2">
 			<div class="container mb-10">
 				<div class="text-center mb-17">
@@ -134,12 +137,13 @@
 				</div>
 			</div>
 		</div>
-		<!--end::How It Works Section-->
+		<!--end::How It Works Section--> --}}
 
 
 
+ @yield('content')
 
-		<!--begin::Statistics Section-->
+		{{-- <!--begin::Statistics Section-->
 		<div class="mt-10">
 			<div class="landing-curve landing-dark-color">
 				<svg viewBox="15 -1 1470 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -230,9 +234,9 @@
 			</div>
 		</div>
 		<!--end::Statistics Section-->
+ --}}
 
-
-		<!--begin::Team Section-->
+		{{-- <!--begin::Team Section-->
 		<div class="py-10 py-lg-20">
 			<div class="container">
 				<div class="text-center mb-12">
@@ -315,10 +319,10 @@
 				</div>
 			</div>
 		</div>
-		<!--end::Team Section-->
+		<!--end::Team Section--> --}}
 
 
-		<!--begin::Projects Section-->
+		{{-- <!--begin::Projects Section-->
 		<div class="mb-lg-n15 position-relative z-index-2">
 			<div class="container">
 				<div class="card" style="filter: drop-shadow(0px 0px 40px rgba(68, 81, 96, 0.08))">
@@ -632,12 +636,12 @@
 				</div>
 			</div>
 		</div>
-		<!--end::Projects Section-->
+		<!--end::Projects Section--> --}}
 
 
 
 
-		<!--begin::Testimonials Section-->
+		{{-- <!--begin::Testimonials Section-->
 		<div class="mt-20 mb-n20 position-relative z-index-2">
 			<div class="container">
 				<div class="text-center mb-17">
@@ -781,7 +785,7 @@
 				</div>
 			</div>
 		</div>
-		<!--end::Testimonials Section-->
+		<!--end::Testimonials Section--> --}}
 
 		<!--begin::Footer Section-->
         @include('user.layouts.footer')

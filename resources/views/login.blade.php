@@ -38,7 +38,7 @@
           <label for="remember">Remember me</label>
         </div>
         <button class="btn btn-primary">Đăng nhập</button>
-        <a href="{{route('trangchu')}}" class="btn btn-success">Trang chủ</a>
+        <a href="{{route('home')}}" class="btn btn-success">Trang chủ</a>
         <a href="{{route('register')}}" class="btn btn-success">Đăng kí</a>
       </form>
     </div>

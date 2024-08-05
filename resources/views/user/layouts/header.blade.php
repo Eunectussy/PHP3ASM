@@ -28,37 +28,30 @@ data-kt-sticky-offset="{default: '200px', lg: '300px'}">
                 <div class="menu menu-column flex-nowrap menu-rounded menu-lg-row menu-title-gray-600 menu-state-title-primary nav nav-flush fs-5 fw-semibold"
                     id="kt_landing_menu">
                     <div class="menu-item">
-                        <a class="menu-link nav-link active py-3 px-4 px-xxl-6" href="#kt_body"
+                        <a class="menu-link nav-link active py-3 px-4 px-xxl-6" href="{{route('home')}}"
                             data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">Home</a>
                     </div>
+                    @foreach ($category as $key => $value)
                     <div class="menu-item">
-                        <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#how-it-works"
-                            data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">How it
-                            Works</a>
+                        <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="{{route('categoryProduct', $value->id)}}">{{ $value->name}}</a>
                     </div>
-                    <div class="menu-item">
-                        <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#achievements"
-                            data-kt-scroll-toggle="true"
-                            data-kt-drawer-dismiss="true">Achievements</a>
-                    </div>
-                    <div class="menu-item">
-                        <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#team"
-                            data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">Team</a>
-                    </div>
-                    <div class="menu-item">
-                        <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#portfolio"
-                            data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">Portfolio</a>
-                    </div>
-                    <div class="menu-item">
-                        <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#pricing"
-                            data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">Pricing</a>
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
         </div>
         <div class="flex-equal text-end ms-1">
+            @if (Auth::check())
+            @if(Auth::user()->role == '1')
+            <a href="{{route('admin.product.listProducts')}}" class="btn btn-success">Admin</a>
+            <a href="{{route('logout')}}" class="btn btn-success">Logout</a>
+            @else
+            <a href="{{route('logout')}}" class="btn btn-success">Logout</a>
+            @endif
+            @else
             <a href="{{route('login')}}" class="btn btn-success">Sign
                 In</a>
+            @endif
         </div>
     </div>
 </div>

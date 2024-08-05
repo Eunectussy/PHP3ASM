@@ -16,6 +16,9 @@
         <label for="" class="form-label">Giá sản phẩm: {{$product->price}}</label>
     </div>
     <div class="mb-3">
+        <label for="" class="form-label">Danh mục: {{$product->catename}}</label>
+    </div>
+    <div class="mb-3">
         <label for="" class="form-label">Ảnh sản phẩm: </label>
         <img src="{{ asset($product->image) }}" alt="" width="200px">
     </div>

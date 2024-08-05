@@ -16,10 +16,10 @@
                     <div class="d-flex justify-content-between mb-10 w-100">
                         <h3 class="card-title align-items-start flex-column">
                             <span class="card-label fw-bold text-gray-800">
-                                Quản lý người dùng
+                                Quản lý danh mục
                             </span>
                         </h3>
-                        <a href="{{ route('admin.user.addUsers')}}" class="btn btn-sm fw-bold btn-primary">Thêm tài khoản</a>
+                        <a href="{{ route('admin.category.addCategory')}}" class="btn btn-sm fw-bold btn-primary">Thêm danh mục</a>
                     </div>
                 </div>
 
@@ -37,26 +37,26 @@
                                                 Tên
                                             </th>
                                             <th class="p-0 pb-3 min-w-100px text-center pe-13">
-                                                Email
+                                                Id
                                             </th>
                                             <th class="p-0 pb-3 w-100px text-center">ACTIONS</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
-                                        @foreach ($users as $key => $item)
+                                        @foreach ($cate as $key => $item)
                                         <tr>
                                             <th scope="row">{{ $key + 1 }}</th>
                                             <td>{{ $item->name }}</td>
-                                            <td>{{ $item->email }}</td>
+                                            <td>{{ $item->id }}</td>
                                             <td>
-                                                <a href="{{route('admin.user.deleteUsers', $item->id)}}" class="btn btn-danger">Xóa</a>
-                                                <a href="{{route('admin.user.updateUsers', $item->id)}}" class="btn btn-primary">Sửa</a>
-                                                <a href="{{route('admin.user.detailUsers', $item->id)}}" class="btn btn-secondary">Chi tiết</a>
+                                                <a href="{{route('admin.category.deleteCategory', $item->id)}}" class="btn btn-danger">Xóa</a>
+                                                <a href="{{route('admin.category.updateCategory', $item->id)}}" class="btn btn-primary">Sửa</a>
+                                                <a href="{{route('admin.category.detailCategory', $item->id)}}" class="btn btn-secondary">Chi tiết</a>
                                             </td>
                                         </tr>
                                     @endforeach
-                                    {{ $users->links('pagination::bootstrap-5') }}
+                                    {{ $cate->links('pagination::bootstrap-5') }}
                                     </tbody>
                                 </table>
                             </div>

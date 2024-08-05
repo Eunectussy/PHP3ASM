@@ -283,6 +283,10 @@ data-kt-sticky-offset="{default: '200px', lg: '0'}" data-kt-sticky-animation="fa
                         <a href="{{ route('logout') }}"
                             class="menu-link px-5">Sign Out</a>
                     </div>
+                    <div class="menu-item px-5">
+                        <a href="{{ route('home') }}"
+                            class="menu-link px-5">Menu</a>
+                    </div>
                 </div>
             </div>
             <div class="app-navbar-item d-lg-none ms-2 me-n2" title="Show header menu">

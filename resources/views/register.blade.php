@@ -21,11 +21,11 @@
         @csrf
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Name</label>
-            <input type="text" class="form-control" name="name" placeholder="abc">
+            <input type="text" class="form-control" name="nameUser" placeholder="abc">
           </div>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Email</label>
-          <input type="email" class="form-control" name="email" placeholder="name@example.com">
+          <input type="email" class="form-control" name="emailUser" placeholder="name@example.com">
         </div>
         <div class="mb-3">
           <label for="exampleFormControlTextarea1" class="form-label">Password</label>

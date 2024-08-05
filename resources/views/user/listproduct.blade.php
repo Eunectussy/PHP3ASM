@@ -1,17 +1,16 @@
 @extends('user.layouts.index')
 @section('title')
     @parent
-    trang chủ
+    {{ $categoryId->id }}
 @endsection
 @push('style')
 @endpush
 @section('content')
     <div class="container">
-        <div class="mb-n10 mb-lg-n20 z-index-2">
             <div class="container mb-10">
                 <div class="text-center mb-17">
                     <h3 class="fs-2hx text-gray-900 mb-5" id="how-it-works" data-kt-scroll-offset="{default: 100, lg: 150}">
-                        Sản phẩm mới</h3>
+                        Danh mục sản phẩm {{ $categoryId->name }}</h3>
                 </div>
                 <div class="mb-5">
                     <input type="text" class="form-control" placeholder="Search" id="search-product">
@@ -35,7 +34,7 @@
                     @endforeach
                 </div>
             </div>
-        </div>
+
     </div>
 @endsection
 @push('script')

@@ -2,32 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; //authen
 use App\Models\Users;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserLoginRequest;
 
 class AuthenController extends Controller
 {
     public function login(){
         return view('login');
     }
-    public function postLogin(Request $req){
-        $req->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required']
-        ],[
-            'email.required' => 'Email không được để trống',
-            'email.email' => 'Email không đúng định dạng',
-            'password.required' => 'Password không được để trống',
-        ]);
+    public function postLogin(UserLoginRequest $req){
+
         $remember = $req->has('remember');
         if (Auth::attempt([
             'email' => $req->email,
             'password' => $req->password
         ], $remember)) {
-            return redirect()->route('admin.product.listProducts');
+            if(Auth::user()->role == '1'){
+            return redirect()->route('admin.product.listProducts');}
+            else{
+                return redirect()->route('home');
+            }
         }else{
             return redirect()->back()->with([
                 'messageError' => 'Email hoặc mật khẩu không đúng'
@@ -36,14 +35,14 @@ class AuthenController extends Controller
     }
     public function logout(){
         Auth::logout();
-        return redirect()->route('login')->with([
+        return redirect()->route('home')->with([
             'messageError' => 'Đăng xuất thành công'
         ]);
     }
     public function register(){
         return view('register');
     }
-    public function postRegister(Request $req){
+    public function postRegister(AdminUserRequest $req){
         $check = Users::where('email', $req->email)->exists();
         if ($check){
             return redirect()->back()->with([
@@ -51,8 +50,8 @@ class AuthenController extends Controller
             ]);
         }else{
             $data = [
-                'name' => $req->name,
-                'email' => $req->email,
+                'nameUser' => $req->name,
+                'emailUser' => $req->email,
                 'password' =>Hash::make($req->password)
             ];
             $newUser = Users::create($data);

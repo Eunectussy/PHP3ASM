@@ -39,7 +39,10 @@
                                             <th class="p-0 pb-3 min-w-100px text-center pe-13">
                                                 Giá
                                             </th>
-                                            <th class="p-0 pb-3 min-w-150px text-center pe-7">
+                                            <th class="p-0 pb-3 min-w-100px text-center pe-7">
+                                                Danh mục
+                                            </th>
+                                            <th class="p-0 pb-3 min-w-100px text-center pe-7">
                                                 Ảnh
                                             </th>
                                             <th class="p-0 pb-3 w-100px text-center">ACTIONS</th>
@@ -52,6 +55,7 @@
                                             <th scope="row">{{ $key + 1 }}</th>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->price }}</td>
+                                            <td>{{ $item->catename }}</td>
                                             <td><img src="{{ asset($item->image) }}" width="200px"></td>
                                             <td>
                                                 {{-- <button type="button" class="btn btn-warning btn-delete" data-bs-id="{{ $item->id }}"

@@ -31,7 +31,7 @@ data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
                 id="#kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false">
 
                 <div class="menu-item show">
-                    <a class="menu-link" href="apps/calendar.html">
+                    <a class="menu-link" href="{{ route('admin.user.listUsers')}}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-element-11 fs-2">
                                 <span class="path1"></span>
@@ -54,40 +54,32 @@ data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
                                 <span class="path3"></span>
                             </i>
                         </span>
-                        <span class="menu-title">Cung cấp số liệu</span>
+                        <span class="menu-title">Menu</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion">
                         <div class="menu-item">
-                            <a class="menu-link" href="pages/user-profile/overview.html">
+                            <a class="menu-link" href="{{ route('admin.user.listUsers')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Tổ chức quản trị</span>
+                                <span class="menu-title">Tài khoản</span>
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="pages/user-profile/projects.html">
+                            <a class="menu-link" href="{{ route('admin.product.listProducts')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Giảng viên</span>
+                                <span class="menu-title">Sản phẩm</span>
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="pages/user-profile/campaigns.html">
+                            <a class="menu-link" href="{{ route('admin.category.listCategory')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Cơ sở vật chất</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="pages/user-profile/documents.html">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Tài chính</span>
+                                <span class="menu-title">Danh mục</span>
                             </a>
                         </div>
                     </div>

@@ -16,7 +16,7 @@ class CheckAdminMiddleware
                 return $next($request);
             }
         else {
-            return redirect()->route('login')->with([
+            return redirect()->route('trangchu')->with([
                 'messageError' => 'Bạn không có quyền'
             ]);
         }}
